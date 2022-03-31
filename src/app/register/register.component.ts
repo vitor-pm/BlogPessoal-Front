@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.user.role = this.tyUser;
+    console.log(this.user);
     if (this.user.password != this.confPassword) {
       alert('As senhas não coincidem.');
     } else {

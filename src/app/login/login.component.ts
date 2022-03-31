@@ -11,7 +11,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
   userLogin: UserLogin = new UserLogin();
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private route: Router) {}
 
   ngOnInit() {
     window.scroll(0, 0);
@@ -27,12 +27,10 @@ export class LoginComponent implements OnInit {
         environment.picture = this.userLogin.picture;
         environment.id = this.userLogin.id;
 
-        console.log(this.userLogin.token);
-
-        this.router.navigate(['/home']);
+        this.route.navigate(['/home']);
       },
       error: (erro) => {
-        if (erro.status == 404) {
+        if (erro.status == 404 || erro.status == 401) {
           alert('Usuário ou senha inválidos.');
         }
       },

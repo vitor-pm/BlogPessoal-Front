@@ -1,1 +1,94 @@
-<p>home works!</p>
+<div class="container-fluid">
+  <div class="row bg-secondary d-flex align-items-center">
+    <div class="col-md-6 text-light">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+          <h1 class="display-1">Seja bem <br> vindo (a)!</h1>
+        </div>
+        <div class="col-md-8 d-flex justify-content-start">
+          <h2>Solta o verbo ai!</h2>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 d-flex justify-content-center mr-5 mt-2">
+          <button class="btn btn-light mr-5" data-toggle="modal" data-target="#newPost">Nova Postagem</button>
+          <a class="btn btn-outline-light mr-5 ml-5" href="#posts">Ver Postagens</a>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <img src="https://i.imgur.com/f0j85Ib.png" width="500px" alt="">
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+
+  <div class="row d-flex justify-content-center mb-3 mt-3" id="posts">
+    <div class="col-md-10">
+
+      <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active text-secondary font-weight-bold" id="allPosts-tab" data-toggle="tab"
+            href="#allPosts" role="tab" aria-controls="allPosts" aria-selected="true">Todas as Postagens</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link text-secondary font-weight-bold" id="myPosts-tab" data-toggle="tab" href="#myPosts"
+            role="tab" aria-controls="myPosts" aria-selected="false">Minhas Postagens</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link text-secondary font-weight-bold" id="postsTheme-tab" data-toggle="tab" href="#postsTheme"
+            role="tab" aria-controls="postsTheme" aria-selected="false">Postagens por tema</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="allPosts-tab">Todas as
+          postagens</div>
+        <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="myPosts-tab">Minhas postagens</div>
+        <div class="tab-pane fade" id="postsTheme" role="tabpanel" aria-labelledby="postsTheme-tab">Postagens por tema
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="newPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova Postagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="">Titulo:</label>
+            <input type="text" class="form-control" placeholder="Digite o titulo">
+          </div>
+          <div class="form-group">
+            <label for="">Texto:</label>
+            <textarea name="text" class="form-control" rows="4" placeholder="Digite o texto"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Escolha um tema ou <a data-dismiss="modal" routerLink="/theme">cadastre um novo</a>:</label>
+            <select name="theme" id="" class="form-control">
+              <option value="">Tema</option>
+              <option value="">Tema</option>
+              <option value="">Tema</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Postar</button>
+      </div>
+    </div>
+  </div>
+</div>
