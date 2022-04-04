@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         environment.name = this.userLogin.name;
         environment.picture = this.userLogin.picture;
         environment.id = this.userLogin.id;
-
+        
         this.route.navigate(['/home']);
       },
       error: (erro) => {

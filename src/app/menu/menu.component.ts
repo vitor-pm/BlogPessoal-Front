@@ -15,12 +15,11 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {}
 
   logout() {
-    this.route.navigate(['/login']);
-    alert('Sessão encerrada');
-
     environment.token = '';
     environment.name = '';
     environment.id = 0;
     environment.picture = '';
+    this.route.navigate(['/login']);
+    alert('Sessão encerrada');
   }
 }
