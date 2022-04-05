@@ -7,5 +7,5 @@ export class User {
   public password: string;
   public picture: string;
   public role: string;
-  public posts: Post[];
+  public myPosts: Post[];
 }

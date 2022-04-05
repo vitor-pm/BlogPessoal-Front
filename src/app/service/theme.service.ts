@@ -14,8 +14,13 @@ export class ThemeService {
     headers: new HttpHeaders().set('authorization', environment.token),
   };
 
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('authorization', environment.token),
+    };
+  }
+
   getAll(): Observable<Theme[]> {
-    console.log(this.token);
     return this.http.get<Theme[]>('http://localhost:8080/theme/all', this.token );
   }
 

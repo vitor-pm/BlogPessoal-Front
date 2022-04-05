@@ -21,6 +21,7 @@ export class ThemeComponent implements OnInit {
       this.route.navigate(['/login']);
     }
 
+    this.themeService.refreshToken();
     this.findAll();
   }
 
