@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AlertsService } from '../service/alerts.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,7 @@ export class MenuComponent implements OnInit {
   name = environment.name;
   picture = environment.picture;
   idUser = environment.id;
-  constructor(private route: Router) {}
+  constructor(private route: Router,private alertService: AlertsService) {}
 
   ngOnInit(): void {}
 
@@ -21,6 +22,6 @@ export class MenuComponent implements OnInit {
     environment.id = 0;
     environment.picture = '';
     this.route.navigate(['/login']);
-    alert('Sessão encerrada');
+    this.alertService.showAlertInfo('Sessão encerrada');
   }
 }

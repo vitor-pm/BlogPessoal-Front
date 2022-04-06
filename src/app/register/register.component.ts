@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -13,7 +14,11 @@ export class RegisterComponent implements OnInit {
   confPassword: string;
   tyUser: string;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private alertService: AlertsService
+  ) {}
 
   ngOnInit() {
     window.scroll(0, 0);
@@ -31,12 +36,12 @@ export class RegisterComponent implements OnInit {
     this.user.role = this.tyUser;
     console.log(this.user);
     if (this.user.password != this.confPassword) {
-      alert('As senhas não coincidem.');
+      this.alertService.showAlertDanger('As senhas não coincidem.');
     } else {
       this.authService.register(this.user).subscribe((resp: User) => {
         this.user = resp;
-        this.router.navigate(['/login'])
-        alert('Usuário cadastrado com sucesso!');
+        this.router.navigate(['/login']);
+        this.alertService.showAlertSuccess('Usuário cadastrado com sucesso!');
       });
     }
   }

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Post } from '../model/Post';
 import { Theme } from '../model/Theme';
 import { User } from '../model/User';
+import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
 import { PostsService } from '../service/posts.service';
 import { ThemeService } from '../service/theme.service';
@@ -28,12 +29,13 @@ export class HomeComponent implements OnInit {
     private route: Router,
     private postService: PostsService,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alerstService: AlertsService
   ) {}
 
   ngOnInit() {
     if (environment.token == '') {
-      alert('Sua sessão expirou, faça o login novamente');
+      this.alerstService.showAlertInfo('Sua sessão expirou, faça o login novamente');
       this.route.navigate(['/login']);
     }
 
@@ -77,7 +79,7 @@ export class HomeComponent implements OnInit {
 
     this.postService.postPost(this.post).subscribe((resp: Post) => {
       this.post = resp;
-      alert('Postagem realizada com sucesso!');
+      this.alerstService.showAlertSuccess('Postagem realizada com sucesso!');
 
       this.getAllPosts(); // Atualiza a lista de posts
 
