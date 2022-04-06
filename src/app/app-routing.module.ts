@@ -4,6 +4,7 @@ import { PostDeleteComponent } from './delete/post-delete/post-delete.component'
 import { ThemeDeleteComponent } from './delete/theme-delete/theme-delete.component';
 import { PostEditComponent } from './edit/post-edit/post-edit.component';
 import { ThemeEditComponent } from './edit/theme-edit/theme-edit.component';
+import { UserEditComponent } from './edit/user-edit/user-edit.component';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  
+
   { path: 'home', component: HomeComponent },
   { path: 'theme', component: ThemeComponent},
 
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'theme-delete/:id', component: ThemeDeleteComponent},
 
   {path: 'post-edit/:id', component: PostEditComponent},
-  {path: 'post-delete/:id', component: PostDeleteComponent}
+  {path: 'post-delete/:id', component: PostDeleteComponent},
+
+  {path: 'user-edit/:id', component: UserEditComponent},
 ];
 
 @NgModule({

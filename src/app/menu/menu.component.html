@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link">Bem vindo, {{ name }}! <i class="fa fa-pencil" aria-hidden="true"></i> <span
+        <a [routerLink]="['/user-edit', idUser]" class="nav-link">Bem vindo, {{ name }}! <i class="fa fa-pencil" aria-hidden="true"></i> <span
             class="sr-only">(current)</span></a>
     </ul>
 

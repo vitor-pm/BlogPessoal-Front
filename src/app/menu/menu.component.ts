@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 export class MenuComponent implements OnInit {
   name = environment.name;
   picture = environment.picture;
+  idUser = environment.id;
   constructor(private route: Router) {}
 
   ngOnInit(): void {}

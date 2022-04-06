@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <h1 class="text-center text-secondary">Atualizar cadastrro</h1>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-8">
+      <form>
+        <div class="form-group">
+          <label for="">Nome:</label>
+          <input [(ngModel)]='user.name' type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Usuario:</label>
+          <input [(ngModel)]='user.username' type="text" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Link da Foto:</label>
+          <input [(ngModel)]='user.picture' type="text" name="picture" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Senha:</label>
+          <input (input)="confirmPassword($event)" type="password" name="pass" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Confirmar senha:</label>
+          <input [(ngModel)]='user.password' type="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Tipo de usuário:</label>
+          <select name="role" id="" class="form-control" (change)="typeUser($event)">
+            <option value="">Selecione uma opção</option>
+            <option value="admin">Administrador</option>
+            <option value="stardard">Padrão</option>
+          </select>
+        </div>
+        <div class="form-group d-flex justify-content-around">
+          <button class="btn btn-outline-danger" routerLink="/home">Cancelar</button>
+          <button class="btn btn-outline-success" (click)='update()'>Atualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+</div>

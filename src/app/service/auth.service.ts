@@ -36,6 +36,10 @@ export class AuthService {
     return this.http.get<User>(`http://localhost:8080/user/id/${id}`, this.token);
   }
 
+  update(user: User): Observable<User> {
+    return this.http.put<User>('http://localhost:8080/user/update', user, this.token);
+  }
+
   logado() {
     let ok: boolean = false;
     if (environment.token != '') {
