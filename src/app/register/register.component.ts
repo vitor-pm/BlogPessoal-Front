@@ -32,6 +32,8 @@ export class RegisterComponent implements OnInit {
     this.tyUser = event.target.value;
   }
 
+
+
   register() {
     this.user.role = this.tyUser;
     console.log(this.user);

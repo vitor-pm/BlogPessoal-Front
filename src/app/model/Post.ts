@@ -1,3 +1,4 @@
+import { Comments } from './Comments';
 import { Theme } from './Theme';
 import { User } from './User';
 
@@ -8,4 +9,5 @@ export class Post {
   public date: Date;
   public creator: User;
   public theme: Theme;
+  public comments: Comments[]
 }

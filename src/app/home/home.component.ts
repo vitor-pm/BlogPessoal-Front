@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { Comments } from '../model/Comments';
 import { Post } from '../model/Post';
 import { Theme } from '../model/Theme';
 import { User } from '../model/User';
 import { AlertsService } from '../service/alerts.service';
 import { AuthService } from '../service/auth.service';
+import { CommentsService } from '../service/comments.service';
 import { PostsService } from '../service/posts.service';
 import { ThemeService } from '../service/theme.service';
 
@@ -25,17 +27,23 @@ export class HomeComponent implements OnInit {
   user: User = new User();
   idUser = environment.id;
 
+  commentText: string;
+  commented: Comments = new Comments();
+
   constructor(
     private route: Router,
     private postService: PostsService,
     private themeService: ThemeService,
     private authService: AuthService,
-    private alerstService: AlertsService
+    private alerstService: AlertsService,
+    private commentsService: CommentsService
   ) {}
 
   ngOnInit() {
     if (environment.token == '') {
-      this.alerstService.showAlertInfo('Sua sessão expirou, faça o login novamente');
+      this.alerstService.showAlertInfo(
+        'Sua sessão expirou, faça o login novamente'
+      );
       this.route.navigate(['/login']);
     }
 
@@ -68,6 +76,41 @@ export class HomeComponent implements OnInit {
     this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       this.user = resp;
     });
+  }
+
+  textComment(event: any) {
+    this.commentText = event.target.value;
+  }
+
+  comment(id: number) {
+    let txt = <HTMLInputElement>document.querySelector('#comment' + id);
+
+    if (txt.value == '') {
+      txt.placeholder = 'Digite um comentário!';
+      txt.style.borderColor = 'red';
+    } else {
+      this.commented.comment = txt.value;
+
+      this.post.id = id;
+      this.commented.post = this.post;
+
+      this.user.id = this.idUser;
+      this.commented.user = this.user;
+
+      console.log(this.commented);
+
+      this.commentsService
+        .comment(this.commented)
+        .subscribe((resp: Comments) => {
+          this.commented = resp;
+          this.alerstService.showAlertSuccess(
+            'Comentário enviado com sucesso!'
+          );
+          this.commented = new Comments();
+        });
+
+      this.getAllPosts(); // Atualiza a lista de posts
+    }
   }
 
   publish() {
