@@ -50,7 +50,7 @@
         <div class="tab-pane fade show active" id="allPosts" role="tabpanel" aria-labelledby="allPosts-tab">
 
           <div class="row d-flex flex-wrap mt-3">
-            <div class="col-md-12" *ngFor="let post of posts">
+            <div class="col-md-12" *ngFor="let post of posts | orderBy : key : reverse">
               <div class="border rounded mb-5">
                 <div class="list-group card-list-group">
                   <div class="list-group-item py-5">
@@ -73,13 +73,13 @@
                         <div class='align-self-end'>
                           <i class="fa fa-tags radius p-2 bg-gray" aria-hidden="true"> {{post.theme.description}}</i>
                         </div>
-                        <p>Comentarios</p>
-                        <div class="border mb-1" *ngFor=" let comment of post.comments">
-                          <p class="card-text mt-3">{{ comment.user.name }}</p>
-                          <p class="card-text mt-3">{{ comment.comment }}</p>
-                        </div>
-                        <input [ngModel]="commentText" id="comment{{post.id}}"  class="form-control" name="comentario" type="text" placeholder="Comentar...">
-                        <button class="btn-success" (click)="comment(post.id)">Comentar</button>
+                          <p>Comentarios</p>
+                          <div class="border mb-1" *ngFor=" let comment of post.comments ">
+                            <p class="card-text mt-3">{{ comment.user.name }}</p>
+                            <p class="card-text mt-3">{{ comment.comment }}</p>
+                          </div>
+                          <input [ngModel]="commentText" id="comment{{post.id}}"  class="form-control" name="comentario" type="text" placeholder="Comentar...">
+                          <button class="btn-success" (click)="comment(post.id)">Comentar</button>
                       </div>
                     </div>
                   </div>

@@ -19,6 +19,7 @@ import { PostEditComponent } from './edit/post-edit/post-edit.component';
 import { PostDeleteComponent } from './delete/post-delete/post-delete.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { AlertsComponent } from './alerts/alerts.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy,

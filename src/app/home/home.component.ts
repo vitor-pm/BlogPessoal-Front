@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit {
   commentText: string;
   commented: Comments = new Comments();
 
+  key = 'data'
+  reverse = true
+
   constructor(
     private route: Router,
     private postService: PostsService,

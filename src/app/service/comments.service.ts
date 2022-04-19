@@ -23,7 +23,7 @@ export class CommentsService {
 
   comment(comment: Comments): Observable<Comments> {
     this.refreshToken();
-    return this.http.post<Comments>('http://localhost:8080/comments/post', comment, this.token);
+    return this.http.post<Comments>(environment.url + '/comments/post', comment, this.token);
   }
 
 }

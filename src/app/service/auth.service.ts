@@ -29,15 +29,15 @@ export class AuthService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>('http://localhost:8080/user/register', user);
+    return this.http.post<User>(environment.url + '/user/register', user);
   }
 
   getByIdUser(id: number): Observable<User> {
-    return this.http.get<User>(`http://localhost:8080/user/id/${id}`, this.token);
+    return this.http.get<User>(environment.url + `/user/id/${id}`, this.token);
   }
 
   update(user: User): Observable<User> {
-    return this.http.put<User>('http://localhost:8080/user/update', user, this.token);
+    return this.http.put<User>(environment.url + 'user/update', user, this.token);
   }
 
   logado() {

@@ -21,22 +21,22 @@ export class ThemeService {
   }
 
   getAll(): Observable<Theme[]> {
-    return this.http.get<Theme[]>('http://localhost:8080/theme/all', this.token );
+    return this.http.get<Theme[]>(environment.url + '/theme/all', this.token );
   }
 
   getThemeById(id: number): Observable<Theme>{
-    return this.http.get<Theme>(`http://localhost:8080/theme/${id}`, this.token );
+    return this.http.get<Theme>(environment.url + `/theme/${id}`, this.token );
   }
 
   postTheme(theme: Theme): Observable<Theme> {
-    return this.http.post<Theme>('http://localhost:8080/theme', theme , this.token);
+    return this.http.post<Theme>(environment.url + '/theme', theme , this.token);
   }
 
   putTheme(theme: Theme): Observable<Theme> {
-    return this.http.put<Theme>('http://localhost:8080/theme', theme ,this.token);
+    return this.http.put<Theme>(environment.url + '/theme', theme ,this.token);
   }
 
   deleteTheme(id: number) {
-    return this.http.delete(`http://localhost:8080/theme/${id}`, this.token);
+    return this.http.delete(environment.url + `/theme/${id}`, this.token);
   }
 }

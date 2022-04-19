@@ -21,23 +21,23 @@ export class PostsService {
   }
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>('http://localhost:8080/posts', this.token);
+    return this.http.get<Post[]>(environment.url + '/posts', this.token);
   }
 
   getPostById(id: number): Observable<Post> {
-    return this.http.get<Post>(`http://localhost:8080/posts/${id}`, this.token);
+    return this.http.get<Post>(environment.url + `/posts/${id}`, this.token);
   }
 
   postPost(post: Post): Observable<Post> {
-    return this.http.post<Post>('http://localhost:8080/posts', post, this.token);
+    return this.http.post<Post>(environment.url + '/posts', post, this.token);
   }
 
   putPost(post: Post):Observable<Post>{
-    return this.http.put<Post>('http://localhost:8080/posts', post, this.token);
+    return this.http.put<Post>(environment.url + '/posts', post, this.token);
   }
 
   deletePost(id: number) {
-    return this.http.delete(`http://localhost:8080/posts/${id}`, this.token);
+    return this.http.delete(environment.url + `/posts/${id}`, this.token);
   }
 
 }
